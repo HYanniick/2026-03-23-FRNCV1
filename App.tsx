@@ -1,20 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from './src/Button/Button';
 
 export default function App() {
-  let counter=0
+    const [counter, setCounter] = useState(0);
+
+    useEffect(() => {
+        console.log("counter has changed : ", counter);
+    }, [counter]);
+
   return (
     <View style={styles.container}>
       <Text>valeur de counter : {counter}</Text>
       <Button bgColor="red" color="white" onButtonPressed={()=>{
-        counter--;
-        console.log(counter)
+        setCounter(counter - 1);
       }} >-1</Button>
       <Button bgColor="blue" color="white" onButtonPressed={()=>{
-        counter++;
-        console.log(counter);
+        setCounter(counter + 1);
       }}>+1</Button>
       <StatusBar style="auto" />
     </View>

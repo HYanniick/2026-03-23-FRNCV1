@@ -8,7 +8,7 @@ interface IButtonProps{
   onButtonPressed:()=>void
 }
 const Button: React.FC<IButtonProps>= ({children, color, bgColor, onButtonPressed=()=>{}}) => {
-  //console.log(props)
+  
   return (
     <Pressable onPress={(evt)=>{
         onButtonPressed()
