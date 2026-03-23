@@ -6,6 +6,11 @@ import Button from './src/Button/Button';
 export default function App() {
     const [counter, setCounter] = useState(0);
 
+    
+    useEffect(() => {
+        console.log("App component has been mounted");
+    }, []);
+
     useEffect(() => {
         console.log("counter has changed : ", counter);
     }, [counter]);
