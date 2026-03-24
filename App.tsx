@@ -1,6 +1,6 @@
 import { Dimensions, ScrollView, StyleSheet, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import ProductViewer from "./src/components/ProductViewer/ProductViewer";
+import ProductViewer from "./src/components/ui/ProductViewer/ProductViewer";
 import { IProduct } from "./src/interfaces/IProducts";
 
 export default function App() {
