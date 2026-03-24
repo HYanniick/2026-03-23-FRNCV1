@@ -15,7 +15,7 @@ interface IProductViewerProps {
 const ProductViewer = ({ product }: IProductViewerProps) => {
   return (
     <View style={styles.ProductViewer}>
-      <Text style={[styles.title, styles.bold]}>{product.titre}</Text>
+      <Text style={[styles.titre, styles.bold]}>{product.titre}</Text>
       <View style={styles.colsFlex}>
         <View style={styles.colLeft}>
           {undefined !== product.stock && product.stock > 0 ? (
@@ -25,7 +25,7 @@ const ProductViewer = ({ product }: IProductViewerProps) => {
           ) : (
             <Text style={styles.indisponible}>Indisponible</Text>
           )}
-          <Text style={styles.description}>Description :</Text>
+          <Text style={styles.descriptionLabel}>Description :</Text>
           <Text style={styles.description}>{product.description}</Text>
           <Text style={styles.prix}>Prix:{product.prix}</Text>
         </View>

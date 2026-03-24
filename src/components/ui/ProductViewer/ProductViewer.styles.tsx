@@ -2,51 +2,39 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   ProductViewer: {
-    borderWidth: 2,
-    borderColor: "black",
+    borderColor: "grey",
+    borderWidth: 1,
     borderStyle: "solid",
-    padding: 10,
-    borderRadius: 7,
-    gap: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
+  titre: {
     textAlign: "center",
+    fontSize: 30,
     textDecorationLine: "underline",
   },
   colsFlex: {
     flexDirection: "row",
-    gap: 20,
+    gap: 5,
   },
   colLeft: {},
   colRight: {
     justifyContent: "center",
     gap: 10,
   },
-  stock: {
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-  description: {
-    fontSize: 14,
-  },
-  prix: {
-    fontWeight: "bold",
-    fontSize: 18,
-  },
+  stock: { fontSize: 20 },
+  descriptionLabel: {},
+  description: {},
+  prix: {},
+  bold: { fontWeight: 900 },
   image: {
     width: 200,
     height: 200,
   },
   indisponible: {
-    fontWeight: "bold",
-    fontSize: 16,
     fontStyle: "italic",
     color: "red",
-  },
-  bold: {
-    fontWeight: "bold",
+    fontWeight: 100,
   },
 });
 
