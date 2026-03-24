@@ -11,7 +11,10 @@ const ProductViewer = ({product}: IProductViewerProps) => {
       <Text style={styles.title}>Titre : {product?.titre}</Text>
       <View style={styles.colsFlex}>
         <View style={styles.colLeft}>
-          <Text style={styles.stock}>Stock : {product?.stock}</Text>
+          {(product?.stock ?? 0) > 0 ? 
+            <Text style={styles.stock}>Stock : {product?.stock}</Text>
+            : <Text style={styles.indisponible}>Indisponible</Text>
+}
           <Text style={styles.description}>Description : {product?.description}</Text>
           <Text style={styles.prix}>Prix : {product?.prix}</Text>
         </View>
@@ -65,5 +68,14 @@ const styles = StyleSheet.create({
   image: {
       width: 200,
       height: 200,
+  },
+  indisponible: {
+      fontWeight: 'bold',
+      fontSize: 16,
+      fontStyle: 'italic',
+      color: 'red',
+  },
+  bold: {
+      fontWeight: 'bold',
   }
 })

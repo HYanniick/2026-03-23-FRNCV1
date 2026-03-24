@@ -16,9 +16,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {/* {products.map ((product: IProduct) => ( */}
-      {products.length > 0 && <ProductViewer product={products[0]} />}
-      {/* ))} */}
+      {products.map((product: IProduct) => (
+        <ProductViewer key={product.id} product={product} />
+      ))} 
     </View>
   );
 }
@@ -28,6 +28,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
+    overflow: 'scroll',
+    gap: 20,
+    padding: 10,
   },
 });
