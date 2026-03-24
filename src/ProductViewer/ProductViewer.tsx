@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { Button, Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import {IProduct} from '../interfaces/IProducts'
 interface IProductViewerProps {
@@ -16,6 +16,7 @@ const ProductViewer = ({product}: IProductViewerProps) => {
           <Text style={styles.prix}>Prix : {product?.prix}</Text>
         </View>
         <View style={styles.colRight}>
+          <Image style={styles.image} source={{uri:product?.imageUrl}} />
           <Button title="Edition" />
         </View>
       </View>
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     padding: 10,
     borderRadius: 7,
+    gap: 10,
   },
   title: {
     fontSize: 20,
@@ -47,6 +49,7 @@ const styles = StyleSheet.create({
   },
   colRight: {
       justifyContent: 'center',
+      gap: 10,
   },
   stock: {
       fontWeight: 'bold',
@@ -58,5 +61,9 @@ const styles = StyleSheet.create({
   prix: {
       fontWeight: 'bold',
       fontSize: 18,
+  },
+  image: {
+      width: 200,
+      height: 200,
   }
 })
