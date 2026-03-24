@@ -1,16 +1,14 @@
-import { View, Text } from "react-native";
 import React from "react";
 import ProductsSearcherUnconnected from "./ProductsSearcher";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateSearch } from "../../../store/productsSlice";
-type Props = {
-  // onSearchChange:(search:string)=>void
-};
+import { AppDispatch, RootState } from "../../../store/store";
 
-const ProductsSearcher = (props: Props) => {
-  const products = useSelector((s: any) => s.stock.products);
-  const search = useSelector((s: any) => s.stock.search);
-  const dispatch = useDispatch();
+
+const ProductsSearcher = (props) => {
+  const products = useSelector((s: RootState) => s.stock.products);
+  const search = useSelector((s: RootState) => s.stock.search);
+  const dispatch = useDispatch<AppDispatch>();
   return (
     <ProductsSearcherUnconnected
       {...props}
@@ -24,19 +22,3 @@ const ProductsSearcher = (props: Props) => {
 };
 
 export default ProductsSearcher;
-
-function mapDispatchToProps(dispatch: Function) {
-  return {
-    onSearchChange:(str)=>dispatch(updateSearch(str))
-  };
-}
-function mapStateToProps(props: Props, state: any) {
-  return {
-    ...props,
-    products: state.stock.products,
-    search: state.stock.search,
-  };
-}
-export const ProductsSearcherNoHook = connect(mapStateToProps, mapDispatchToProps)(
-  ProductsSearcherUnconnected,
-);

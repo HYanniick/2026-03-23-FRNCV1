@@ -1,6 +1,5 @@
-import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
-import React, { useEffect, useState } from "react";
-import { IProduct } from "./src/interfaces/IProducts";
+import { ScrollView, StyleSheet, View } from "react-native";
+import React from "react";
 import ProductsListViewer from "./src/components/ui/ProductsListViewer/ProductsListViewer.connected";
 import Banner from "./src/components/ui/Banner/Banner";
 import {store} from './src/store/store'
@@ -19,5 +18,3 @@ export default function App() {
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({});

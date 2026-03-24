@@ -27,9 +27,7 @@ const productsSlice = createSlice({
       state,
       action: { type: string; payload: Array<IProduct> },
     ) => {
-      //vidange
       state.products.splice(0);
-      //remplissage avec chaque element contenu dans l'array un par un
       state.products.push(...action.payload);
       state.filtredProducts = state.products;
     },
