@@ -1,4 +1,4 @@
-import { Text, Pressable } from "react-native";
+import { View, Text, Pressable,ToastAndroid } from "react-native";
 import React, { useEffect, useState } from 'react'
 import styles from "./Button.styles";
 interface IButtonProps{
@@ -8,38 +8,22 @@ interface IButtonProps{
   onButtonPressed:()=>void
 }
 const Button: React.FC<IButtonProps>= ({children, color, bgColor, onButtonPressed=()=>{}}) => {
-  const [isActive, setIsActive] = useState(false);
-
+  //console.log(props)
+  const [clickablableBGColor, setclickablableBGColor] = useState<string>(bgColor)
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setIsActive(false);
-    }, 180);
-    return () => clearTimeout(timeoutId);
-  }, [isActive]);
+    setTimeout(()=>{
+          setclickablableBGColor(bgColor)
+          console.log('remise a zero de la couleur');
 
-  const handlePressIn = () => {
-    setIsActive(true);
-  };
-
-
+        },230)
+  }, [bgColor,clickablableBGColor])
 
   return (
     <Pressable onPress={(evt)=>{
+        setclickablableBGColor('grey')
+
         onButtonPressed()
-    }}
-      onPressIn={handlePressIn}
-      style={[
-        styles.Button, {
-            backgroundColor:bgColor === 'blue'
-              ? isActive
-                ? 'lightblue'
-                : 'blue'
-              : isActive
-                ? '#ff7b7b'
-                : 'red',
-        },
-      ]}
-    >
+    }} style={[styles.Button, {backgroundColor:clickablableBGColor}]}>
       <Text style={[styles.text,{color:color}]}>{children}</Text>
     </Pressable>
   );
