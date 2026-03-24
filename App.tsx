@@ -1,36 +1,27 @@
-import { Dimensions, ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import ProductViewer from "./src/components/ui/ProductViewer/ProductViewer";
 import { IProduct } from "./src/interfaces/IProducts";
+import ProductsListViewer from "./src/components/ui/ProductsListViewer/ProductsListViewer";
 
 export default function App() {
-  const [products, setProducts] = useState<IProduct[]>([]);
-
+  const [products, setProducts] = useState<Array<IProduct>>([]);
   useEffect(() => {
     fetch(
-      `${process.env.EXPO_PUBLIC_API_BASE_URL}${process.env.EXPO_PUBLIC_API_ENDPOINT_PRODUCTS}`,
+      `${process.env.EXPO_PUBLIC_API_URL}:${process.env.EXPO_PUBLIC_API_PORT}${
+        process.env.EXPO_PUBLIC_API_ENDPOINT_PRODUCTS
+      }`,
     )
-      .then((response) => response.json())
-      .then((data) => setProducts(data));
+      .then((r) => r.json())
+      .then((a) => setProducts(a));
   }, []);
 
   return (
-    <ScrollView style={{ height: Dimensions.get('window').height - 200}}>
-      <View style={styles.container}>
-        {products.map((product: IProduct) => (
-          <ProductViewer key={product.id} product={product} />
-        ))} 
-      </View>
-    </ScrollView>
+    <View style={{ flex: 1 }}>
+      <ScrollView>
+        <ProductsListViewer products={products}/>
+      </ScrollView>
+    </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "row",
-    backgroundColor: "#fff",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-  },
-});
+const styles = StyleSheet.create({});
