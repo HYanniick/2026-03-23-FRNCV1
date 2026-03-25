@@ -1,15 +1,18 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../screens/Home";
+import Store from "../screens/Store";
+
 type Props = {};
 const Stack = createNativeStackNavigator();
 
 const Navigation = (props : Props) => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
+    <Stack.Navigator initialRouteName="home">
+      <Stack.Screen name="home" component={Home} options={{
+        headerShown: false
+      }}/>
+      <Stack.Screen name="store" component={Store} />
     </Stack.Navigator>
   );
 }
