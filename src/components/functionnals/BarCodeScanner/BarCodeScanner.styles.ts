@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalView: {
+    gap: 10,
     margin: 20,
     backgroundColor: "white",
     borderRadius: 20,

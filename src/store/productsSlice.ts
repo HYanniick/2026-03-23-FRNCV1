@@ -17,6 +17,12 @@ const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+    searchByBarCode: (state, action: { type: string; payload: string }) => {
+      const p = state.products.find((p) => p.barCode === action.payload);
+      if (p) {
+        state.filtredProducts = [p];
+      }
+    },
     updateSearch: (state, action: { type: string; payload: string }) => {
       state.search = action.payload;
       state.filtredProducts = state.products.filter((p) =>
@@ -41,16 +47,14 @@ const productsSlice = createSlice({
   },
 });
 
-export const { initialProductLoad, updateSearch } = productsSlice.actions;
+export const { initialProductLoad, updateSearch, searchByBarCode } = productsSlice.actions;
 const productsReducer = productsSlice.reducer;
 export default productsReducer;
 
-export const loadRestAPI = createAsyncThunk(
-  "products/loadAPI",
-  async () => {
-    const response = await fetch(`${process.env.EXPO_PUBLIC_API_BASE_URL}${process.env.EXPO_PUBLIC_API_ENDPOINT_PRODUCTS}`);
-    const data = await response.json();
-    return data;
-  },
-);
-
+export const loadRestAPI = createAsyncThunk("products/loadAPI", async () => {
+  const response = await fetch(
+    `${process.env.EXPO_PUBLIC_API_BASE_URL}${process.env.EXPO_PUBLIC_API_ENDPOINT_PRODUCTS}`,
+  );
+  const data = await response.json();
+  return data;
+});

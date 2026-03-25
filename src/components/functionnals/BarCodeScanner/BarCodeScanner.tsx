@@ -1,13 +1,18 @@
-import { useIsFocused } from "@react-navigation/native";
 import { CameraType, CameraView, useCameraPermissions } from "expo-camera";
 import { Button, Linking, Modal, Pressable, Text, View } from "react-native";
 import styles from "./BarCodeScanner.styles";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { searchByBarCode } from "../../../store/productsSlice";
+import { useNavigation } from "@react-navigation/native";
 
 const BarCodeScanner = () => {
   const [facing, setFacing] = useState<CameraType>("back");
   const [permission, requestPermission] = useCameraPermissions();
   const [modalVisible, setModalVisible] = useState(false);
+  const [found, setFound] = useState("");
+  const dispatch = useDispatch();
+  const nav = useNavigation();
 
   if (permission && !permission.granted) {
     return (
@@ -45,12 +50,22 @@ const BarCodeScanner = () => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
+            <Text style={styles.modalText}>Article trouvé !</Text>
+            <Pressable
+              style={[styles.button, styles.buttonOpen]}
+              onPress={() => {
+                dispatch(searchByBarCode(found));
+                nav.navigate("store");
+                setModalVisible(!modalVisible);
+              }}
+            >
+              <Text style={styles.textStyle}>Voir l'article</Text>
+            </Pressable>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
             >
-              <Text style={styles.textStyle}>Hide Modal</Text>
+              <Text style={styles.textStyle}>Annuler</Text>
             </Pressable>
           </View>
         </View>
@@ -63,7 +78,7 @@ const BarCodeScanner = () => {
         }}
         onBarcodeScanned={({ type, data }) => {
           setModalVisible(true);
-          console.log(`Bar code with type ${type} and data ${data} has been scanned!`);
+          setFound(data);
         }}
       />
     </View>
