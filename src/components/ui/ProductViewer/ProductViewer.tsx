@@ -1,7 +1,6 @@
 import {
   Button,
   Image,
-  StyleSheet,
   Text,
   View,
 } from "react-native";
@@ -12,9 +11,14 @@ import { styles } from "./ProductViewer.styles";
 interface IProductViewerProps {
   product: IProduct;
   onProductAddToCart?: (p: IProduct) => void;
+  onProductEdit?: (p: IProduct) => void;
 }
 
-const ProductViewer = ({ product, onProductAddToCart }: IProductViewerProps) => {
+const ProductViewer = ({
+  product,
+  onProductAddToCart,
+  onProductEdit,
+}: IProductViewerProps) => {
   return (
     <View style={styles.ProductViewer}>
       <Text style={[styles.titre, styles.bold]}>{product.titre}</Text>
@@ -33,7 +37,21 @@ const ProductViewer = ({ product, onProductAddToCart }: IProductViewerProps) => 
         </View>
         <View style={styles.colRight}>
           <Image style={styles.image} source={{ uri: product.imageUrl }} />
-          <Button title="Ajouter au panier" onPress={() => product && onProductAddToCart && onProductAddToCart(product)} />
+          <View style={styles.actions}>
+            <Button
+              title="Ajouter au panier"
+              onPress={() =>
+                product && onProductAddToCart && onProductAddToCart(product)
+              }
+            />
+            {onProductEdit && (
+              <Button
+                title="Modifier"
+                color="darkorange"
+                onPress={() => onProductEdit(product)}
+              />
+            )}
+          </View>
         </View>
       </View>
     </View>
@@ -41,4 +59,3 @@ const ProductViewer = ({ product, onProductAddToCart }: IProductViewerProps) => 
 };
 
 export default ProductViewer;
-

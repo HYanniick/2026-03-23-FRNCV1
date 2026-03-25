@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  container: {
+    paddingBottom: 16,
+  },
   header: {
     paddingTop: 10,
     textAlign: "center",
@@ -19,6 +22,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 8,
     gap: 5,
     flexGrow: 1,
+    flexShrink: 1,
   },
   headerValue: {
     fontStyle: "italic",
@@ -39,32 +43,55 @@ export const styles = StyleSheet.create({
   },
   multiLinesInput: {
     fontSize: 15,
+    minHeight: 120,
+    textAlignVertical: "top",
   },
   right: {
-    // backgroundColor:'skyblue',
     justifyContent: "flex-start",
     alignItems: "center",
     gap: 15,
     padding: 10,
+    width: 140,
+  },
+  previewTitle: {
+    fontWeight: "600",
   },
   image: {
     width: 100,
     height: 100,
     borderStyle: "solid",
     borderWidth: 1,
+    borderColor: "grey",
   },
   thumbnail: {
     height: 64,
     width: 64,
     borderStyle: "solid",
     borderWidth: 1,
+    borderColor: "grey",
     borderRadius: 7,
+  },
+  placeholder: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f3f3f3",
+  },
+  validationMessage: {
+    color: "tomato",
+    textAlign: "center",
+    paddingHorizontal: 16,
   },
   buttons: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: 15,
     paddingBottom: 10,
     paddingTop: 10,
+  },
+  saveButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
   },
 });

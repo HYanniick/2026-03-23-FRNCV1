@@ -22,11 +22,14 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 10,
   },
+  actions: {
+    gap: 10,
+  },
   stock: { fontSize: 20 },
   descriptionLabel: {},
   description: {},
   prix: {},
-  bold: { fontWeight: 900 },
+  bold: { fontWeight: "900" },
   image: {
     width: 200,
     height: 200,
