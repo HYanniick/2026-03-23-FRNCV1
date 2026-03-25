@@ -1,9 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Button, Image, Text, View } from "react-native"
 import { StyleSheet } from "react-native";
+import type { RootStackParamList } from "../navigation/types";
 
 const Home = () => {
-    const nav = useNavigation();
+    const nav = useNavigation<NativeStackNavigationProp<RootStackParamList, "home">>();
     return (
         <View style={styles.main}>
             <Text style={styles.titre}>Bienvenue</Text>
