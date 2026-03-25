@@ -1,12 +1,16 @@
+import { useNavigation } from "@react-navigation/native";
 import { Button, Image, Text, View } from "react-native"
 import { StyleSheet } from "react-native";
 
 const Home = () => {
+    const nav = useNavigation();
     return (
         <View style={styles.main}>
             <Text style={styles.titre}>Bienvenue</Text>
-            {/* <Image source={require("../assets/logo.png")} style={styles.image} /> */}
-            <Button title="Accéder au magasin" onPress={() => {}} />
+            <Image source={require("../../assets/trolley.png")} style={styles.image} />
+            <Button title="Accéder au magasin" onPress={() => {
+                nav.navigate("store");
+            }} />
         </View>
     )
 }

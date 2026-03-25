@@ -1,12 +1,9 @@
-import { View, Text } from "react-native";
 import React from "react";
 import ProductsSearcherUnconnected from "./ProductsSearcher";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateSearch } from "../../../store/productsSlice";
 import { AppDispatch, RootState } from "../../../store/store";
-type Props = {
-  // onSearchChange:(search:string)=>void
-};
+type Props = {};
 
 const ProductsSearcher = (props: Props) => {
   const products = useSelector((s: RootState) => s.stock.products);

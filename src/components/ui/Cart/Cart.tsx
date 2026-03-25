@@ -1,7 +1,8 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { IProduct } from "../../../interfaces/IProducts";
 import CartItem from "./CartItem/CartItem";
+import { styles } from "./Cart.styles";
 
 type Props = {
   products: Array<IProduct>;
@@ -33,18 +34,3 @@ const Cart = ({ products , onQuantChange}: Props) => {
 };
 
 export default Cart;
-
-const styles = StyleSheet.create({
-  CartItem: {
-    textAlign:'center',
-    padding:5
-  },
-  scroll:{},
-  header:{textAlign:'center',
-    textDecorationStyle:'solid',
-    textDecorationLine:'underline',
-    fontSize:15
-  },
-  total: {textAlign:'right'},
-  totalValue: {paddingHorizontal:8,fontSize:15,fontWeight:900},
-});

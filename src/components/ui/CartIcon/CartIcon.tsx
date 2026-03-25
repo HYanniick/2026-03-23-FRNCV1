@@ -11,7 +11,7 @@ const CartIcon = ({quantity}: ICartIconProps) => {
       
       }}>
       <Image
-        source={require('./trolley.png')}
+        source={require('../../../../assets/trolley.png')}
         style={style.icon}
       />
       {quantity > 0 && (
