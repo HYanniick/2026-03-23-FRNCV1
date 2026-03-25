@@ -6,7 +6,8 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "json":"json-server -p 60000 db.json"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",

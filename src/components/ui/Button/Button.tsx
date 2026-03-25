@@ -1,4 +1,4 @@
-import { Text, Pressable } from "react-native";
+import { View, Text, Pressable,ToastAndroid } from "react-native";
 import React, { useEffect, useState } from 'react'
 import styles from "./Button.styles";
 interface IButtonProps{
@@ -8,6 +8,7 @@ interface IButtonProps{
   onButtonPressed:()=>void
 }
 const Button: React.FC<IButtonProps>= ({children, color, bgColor, onButtonPressed=()=>{}}) => {
+  //console.log(props)
   const [clickablableBGColor, setclickablableBGColor] = useState<string>(bgColor)
   useEffect(() => {
     setTimeout(()=>{
