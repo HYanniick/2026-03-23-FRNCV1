@@ -1,31 +1,23 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import ProductsListViewerUnconnected from './ProductsListViewer'
-import { useSelector, connect } from 'react-redux'
-import { IProduct } from '../../../interfaces/IProducts'
+import { useSelector, useDispatch } from 'react-redux'
 import { AppDispatch, RootState } from '../../../store/store'
+import { addProduct } from '../../../store/cartSlice'
+
 type Props = {
     style?:any
 }
 
 const ProductsListViewer = (props: Props) => {
   const products =useSelector((s:RootState)=>s.stock.filtredProducts)
+  const dispatch = useDispatch<AppDispatch>();
   return (
-    <ProductsListViewerUnconnected {...props} products={products}/>
+    <ProductsListViewerUnconnected
+      {...props}
+      products={products}
+      onProductAddToCart={(product) => dispatch(addProduct(product))}
+    />
   )
 }
 
 export default ProductsListViewer
-/*************************
- * Old version without Hooks (react<16.8)
- */
-function mapDispatchToProps(dispatch:AppDispatch){
-    return {}
-}
-function mapStateToProps(props:Props,state:RootState){
-    return {
-        ...props,
-        products:state.stock.products as Array<IProduct>
-    }
-}
-export const ProductsListViewerNoHook=connect(mapStateToProps,mapDispatchToProps)( ProductsListViewerUnconnected)

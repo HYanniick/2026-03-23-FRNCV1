@@ -13,14 +13,14 @@ const [selected, setselected] = useState(emptyProduct)
   return (
     <Provider store={store}>
       <View style={{ flex: 1, }}>
-        {/* <Banner/>
+        <Banner/>
         <ProductsSearcher/>
         <ScrollView>
           <ProductsListViewer/>
         </ScrollView>
-        */}
-        {store.getState().stock.products.length>0&&<Cart onQuantChange={(p,q)=>console.log(p,q)} products={store.getState().stock.products.filter((e,i)=>i<=6)}/>}
-        {store.getState().stock.products.length>0&&<ProductEditor product={store.getState().stock.products[0]} onProductSaved={pr=>{setselected(pr)}}/>}
+       
+        {/* {store.getState().stock.products.length>0&&<Cart onQuantChange={(p,q)=>console.log(p,q)} products={store.getState().stock.products.filter((e,i)=>i<=6)}/>}
+        {store.getState().stock.products.length>0&&<ProductEditor product={store.getState().stock.products[0]} onProductSaved={pr=>{setselected(pr)}}/>} */}
       </View>
     </Provider>
   );

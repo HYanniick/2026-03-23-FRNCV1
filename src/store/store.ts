@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import productsReducer, { initialProductLoad } from "./productsSlice";
 import {products} from '../../db.json'
-import cartReducer from "./CartSlice";
+import cartReducer from "./cartSlice";
 export const store=configureStore({
   reducer:{stock:productsReducer, cart:cartReducer}
 })

@@ -25,19 +25,3 @@ const ProductsSearcher = (props: Props) => {
 };
 
 export default ProductsSearcher;
-
-function mapDispatchToProps(dispatch: AppDispatch) {
-  return {
-    onSearchChange:(str)=>dispatch(updateSearch(str))
-  };
-}
-function mapStateToProps(props: Props, state: RootState) {
-  return {
-    ...props,
-    products: state.stock.products,
-    search: state.stock.search,
-  };
-}
-export const ProductsSearcherNoHook = connect(mapStateToProps, mapDispatchToProps)(
-  ProductsSearcherUnconnected,
-);
