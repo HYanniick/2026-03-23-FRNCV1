@@ -25,17 +25,18 @@ const CarSlice = createSlice({
         }
     },
     removeProduct: (s, action: { type: string; payload: IProduct }) => {
-      const position = s.products.findIndex((p) => p === action.payload);
+      const position = s.products.findIndex((p) => p.id === action.payload.id);
       if (position === -1) {
-       return
+        return;
+      }
+
+      if (
+        s.products[position].quant !== undefined &&
+        s.products[position].quant! > 1
+      ) {
+        s.products[position].quant!--;
       } else {
-        if (s.products[position].quant !== undefined && s.products[position].quant>1)
-          s.products[position].quant--
-        else{
-          const afterdelete=s.products.slice(position+1)
-          s.products.splice(position)
-          s.products.push(...afterdelete)
-        }
+        s.products.splice(position, 1);
       }
     },
   },
