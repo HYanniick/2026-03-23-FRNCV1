@@ -8,20 +8,25 @@ import { Provider } from "react-redux";
 import ProductsSearcher from "./src/components/functionnals/ProductsSearcher/ProductsSearcher.connected";
 import ProductEditor from "./src/components/ui/ProductEditor/ProductEditor";
 import Cart from "./src/components/ui/Cart/Cart";
+import { NavigationContainer } from "@react-navigation/native";
+import Navigation from "./src/navigation/navigation";
 export default function App() {
 const [selected, setselected] = useState(emptyProduct)
   return (
     <Provider store={store}>
-      <View style={{ flex: 1, }}>
+      <NavigationContainer>
+        <Navigation />
+      </NavigationContainer>
+      {/* <View style={{ flex: 1, }}>
         <Banner/>
         <ProductsSearcher/>
         <ScrollView>
           <ProductsListViewer/>
         </ScrollView>
        
-        {/* {store.getState().stock.products.length>0&&<Cart onQuantChange={(p,q)=>console.log(p,q)} products={store.getState().stock.products.filter((e,i)=>i<=6)}/>}
-        {store.getState().stock.products.length>0&&<ProductEditor product={store.getState().stock.products[0]} onProductSaved={pr=>{setselected(pr)}}/>} */}
-      </View>
+        {store.getState().stock.products.length>0&&<Cart onQuantChange={(p,q)=>console.log(p,q)} products={store.getState().stock.products.filter((e,i)=>i<=6)}/>}
+        {store.getState().stock.products.length>0&&<ProductEditor product={store.getState().stock.products[0]} onProductSaved={pr=>{setselected(pr)}}/>}
+      </View> */}
     </Provider>
   );
 }
