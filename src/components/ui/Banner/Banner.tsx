@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 import { style } from './Banner.style';
-import CartIcon from '../CartIcon/CartIcon';
+import CartIcon from '../CartIcon/CartIcon.connected';
 interface BannerProps {
   text?: string;
   styleProps?: object;
@@ -12,7 +12,7 @@ const Banner = ({ text = 'Ma boutique', styleProps={} }:BannerProps) => {
       <View style={style.left}>
         <Text style={style.title}>{text}</Text>
       </View>
-      <CartIcon quantity={10} />
+      <CartIcon />
     </View>
   );
 };

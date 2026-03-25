@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IProduct } from "../interfaces/IProducts";
 interface IProductsSliceState {
   products: Array<IProduct>;
@@ -27,15 +27,30 @@ const productsSlice = createSlice({
       state,
       action: { type: string; payload: Array<IProduct> },
     ) => {
-      //vidange
       state.products.splice(0);
-      //remplissage avec chaque element contenu dans l'array un par un
       state.products.push(...action.payload);
       state.filtredProducts = state.products;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(loadRestAPI.fulfilled, (state, action) => {
+      state.products.push(...action.payload);
+      state.filtredProducts = state.products;
+      state.search = "";
+    });
   },
 });
 
 export const { initialProductLoad, updateSearch } = productsSlice.actions;
 const productsReducer = productsSlice.reducer;
 export default productsReducer;
+
+export const loadRestAPI = createAsyncThunk(
+  "products/loadAPI",
+  async () => {
+    const response = await fetch(`${process.env.EXPO_PUBLIC_API_BASE_URL}${process.env.EXPO_PUBLIC_API_ENDPOINT_PRODUCTS}`);
+    const data = await response.json();
+    return data;
+  },
+);
+
