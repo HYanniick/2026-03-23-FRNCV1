@@ -5,12 +5,13 @@ import Home from "../screens/Home";
 import Store from "../screens/Store";
 import type { RootStackParamList } from "./types";
 import CartIcon from "../components/ui/CartIcon/CartIcon.connected";
+import Cam from "../screens/Cam";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const Navigation = () => {
   return (
-    <Stack.Navigator initialRouteName="home">
+    <Stack.Navigator initialRouteName="cam">
       <Stack.Screen name="home" component={Home} options={{
         headerShown: false
       }}/>
@@ -20,6 +21,7 @@ const Navigation = () => {
         headerTitleAlign: "center",
         title: "Boutique"
       }} />
+      <Stack.Screen name="cam" component={Cam} options={{ title: "Caméra" }} />
       <Stack.Screen name="cart" component={Cart} options={{ title: "Panier" }} />
     </Stack.Navigator>
   );
