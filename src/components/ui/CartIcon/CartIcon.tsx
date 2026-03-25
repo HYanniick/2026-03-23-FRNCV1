@@ -4,12 +4,11 @@ import { style } from './CartIcon.styles';
 
 interface ICartIconProps {
   quantity: number;
+  onPress?: () => void;
 }
-const CartIcon = ({quantity}: ICartIconProps) => {
+const CartIcon = ({quantity, onPress}: ICartIconProps) => {
   return (
-    <TouchableOpacity onPress={()=>{
-      
-      }}>
+    <TouchableOpacity onPress={onPress}>
       <Image
         source={require('../../../../assets/trolley.png')}
         style={style.icon}

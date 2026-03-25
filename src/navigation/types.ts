@@ -1,6 +1,7 @@
 export type RootStackParamList = {
   home: undefined;
   store: undefined;
+  cart: undefined;
 };
 
 declare global {
@@ -8,4 +9,3 @@ declare global {
     interface RootParamList extends RootStackParamList {}
   }
 }
-

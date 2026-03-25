@@ -8,7 +8,6 @@ type Props = {};
 const Store = (props: Props) => {
   return (
     <View style={{ flex: 1 }}>
-      <Banner />
       <ProductsSearcher />
       <ScrollView>
         <ProductsListViewer />

@@ -7,6 +7,7 @@ export interface IProduct{
     stock?:number
     prix:number
     quant?:number
+    barCode?:string
 }
 export const emptyProduct:IProduct={
     titre:'',

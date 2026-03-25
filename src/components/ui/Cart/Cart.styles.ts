@@ -1,16 +1,36 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  CartItem: {
-    textAlign:'center',
-    padding:5
+  container: {
+    flex: 1,
+    padding: 12,
   },
-  scroll:{},
-  header:{textAlign:'center',
-    textDecorationStyle:'solid',
-    textDecorationLine:'underline',
-    fontSize:15
+  scroll: {
+    flex: 1,
   },
-  total: {textAlign:'right'},
-  totalValue: {paddingHorizontal:8,fontSize:15,fontWeight:900},
+  scrollContent: {
+    paddingBottom: 12,
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  emptyText: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: '#666',
+  },
+  footer: {
+    borderTopColor: '#ddd',
+    borderTopWidth: 1,
+    paddingTop: 12,
+  },
+  total: {
+    textAlign: 'right',
+    fontSize: 16,
+  },
+  totalValue: {
+    fontSize: 18,
+    fontWeight: '700',
+  },
 });
