@@ -6,25 +6,49 @@ import Store from "../screens/Store";
 import type { RootStackParamList } from "./types";
 import CartIcon from "../components/ui/CartIcon/CartIcon.connected";
 import Cam from "../screens/Cam";
+import { View } from "react-native";
+import ScanIcon from "../components/ui/ScanIcon/ScanIcon";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const Navigation = () => {
   return (
-    <Stack.Navigator initialRouteName="cam">
-      <Stack.Screen name="home" component={Home} options={{
-        headerShown: false
-      }}/>
-      <Stack.Screen name="store" component={Store} options={{
-        headerRight: () => <CartIcon />,
-        headerTitleStyle: { fontWeight: "bold", fontSize: 24, color: "blue", fontFamily: "Oswald, lato" },
-        headerTitleAlign: "center",
-        title: "Boutique"
-      }} />
-      <Stack.Screen name="cam" component={Cam} options={{ title: "Caméra" }} />
-      <Stack.Screen name="cart" component={Cart} options={{ title: "Panier" }} />
+    <Stack.Navigator initialRouteName="home">
+      <Stack.Screen
+        name="home"
+        component={Home}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="store"
+        component={Store}
+        options={{
+          headerRight: () => (
+            <View style={{ flexDirection: "row", gap: 10 }}>
+              <ScanIcon />
+              <CartIcon />
+            </View>
+          ),
+          headerTitleStyle: {
+            fontWeight: "bold",
+            fontSize: 24,
+            color: "blue",
+            fontFamily: "Oswald, lato",
+          },
+          headerTitleAlign: "center",
+          title: "Boutique",
+        }}
+      />
+      <Stack.Screen name="scan" component={Cam} options={{ title: "Caméra" }} />
+      <Stack.Screen
+        name="cart"
+        component={Cart}
+        options={{ title: "Panier" }}
+      />
     </Stack.Navigator>
   );
-}
+};
 
 export default Navigation;

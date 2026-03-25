@@ -12,8 +12,6 @@ const Button: React.FC<IButtonProps>= ({children, color, bgColor, onButtonPresse
   useEffect(() => {
     setTimeout(()=>{
           setclickablableBGColor(bgColor)
-          console.log('remise a zero de la couleur');
-
         },230)
   }, [bgColor,clickablableBGColor])
 

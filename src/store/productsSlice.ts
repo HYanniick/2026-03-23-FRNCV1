@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IProduct } from "../interfaces/IProducts";
-interface IProductsSliceState {
+export interface IProductsSliceState {
   products: Array<IProduct>;
   selectedProduct: undefined | IProduct;
   filtredProducts: Array<IProduct>;

@@ -3,6 +3,7 @@ export type RootStackParamList = {
   store: undefined;
   cart: undefined;
   cam: undefined;
+  scan: undefined;
 };
 
 declare global {
